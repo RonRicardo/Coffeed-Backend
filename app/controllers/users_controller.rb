@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :find_user, only: [:show, :update, :destroy]
+  before_action :set_user, only: [:show, :update, :destroy, :pending_friends]
 
   # GET /users
   def index
@@ -33,6 +33,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def pending_friends
+    @pending_friends = @user.pending_friends
+  end
+
   # DELETE /users/1
   def destroy
     @user.destroy
@@ -40,16 +44,12 @@ class UsersController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    # def set_user
-    #   @user = User.find(params[:id])
-    # end
+    def set_user
+      @user = User.find(params[:user_id])
+    end
 
     # Only allow a trusted parameter "white list" through.
     def user_params
-      params.require(:user).permit(:name, :username)
+      params.require(:user).permit(:name, :username, :password, :last_seen)
     end
-
-    def find_user
-    @User = User.find_or_create_by(username: params[:username])
-  end
 end
