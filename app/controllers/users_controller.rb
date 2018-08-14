@@ -1,10 +1,9 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :update, :destroy, :pending_friends]
+  before_action :set_user, only: [:show, :update, :destroy, :pending_friends, :friendships]
 
   # GET /users
   def index
     @users = User.all
-
     render json: @users
   end
 
@@ -33,22 +32,41 @@ class UsersController < ApplicationController
     end
   end
 
-  def pending_friends
-    @pending_friends = @user.pending_friends
-  end
-
   # DELETE /users/1
   def destroy
     @user.destroy
   end
 
+  def friendships
+    @friendships = @user.friendships
+    render json: @friendships
+  end
+
+  def friendships_update
+    @friendship = Friendship.find(params[:friendship_id])
+    if @friendship.update(friendship_params)
+      render json: @friendship
+    else
+      render json: @friendship.errors, status: :unprocessable_entity
+    end
+  end
+
+  def pending_friends
+    @pending_friends = @user.pending_friends
+    render json: @pending_friends
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
-      @user = User.find(params[:user_id])
+      @user = User.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
+    def friendship_params
+      params.require(:friend_id).permit(:last_seen)
+    end
+
     def user_params
       params.require(:user).permit(:name, :username, :password, :last_seen)
     end

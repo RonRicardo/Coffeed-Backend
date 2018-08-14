@@ -16,6 +16,6 @@ Friendship.destroy_all
 end
 
 6.times do
-  FriendRequest.create(user_id: 1, friend_id: rand(2..10))
+  FriendRequest.create(user_id: rand(2..10), friend_id: 1)
   Friendship.create(user_id: 1, friend_id: rand(16..30))
 end
