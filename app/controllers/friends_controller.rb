@@ -13,6 +13,6 @@ class FriendsController < ApplicationController
 
   private
     def set_friend
-      @friend = current_user.friends.find(params[:id])
+      @friend = current_user.friends.find(params[:friend_id])
     end
 end

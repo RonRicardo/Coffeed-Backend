@@ -2,7 +2,7 @@ class FriendRequestsController < ApplicationController
   before_action :set_friend_request, :set_user, except: [:incoming, :outgoing, :create]
 
   def create
-    friend = User.find(params[:id])
+    friend = User.find(params[:friend_id])
     current_user = User.find(params[:user_id])
     @friend_request = current_user.friend_requests.new(friend: friend)
 
@@ -29,6 +29,7 @@ class FriendRequestsController < ApplicationController
   end
 
   def update
+    byebug
     @friend_request.accept
     head :no_content
   end
@@ -36,7 +37,7 @@ class FriendRequestsController < ApplicationController
   private
 
   def set_friend_request
-    @friend_request = FriendRequest.find(params[:id])
+    @friend_request = FriendRequest.where(friend: User.find(params[:friend_id]), user: User.find(params[:user_id]))[0]
   end
 
   def set_user
