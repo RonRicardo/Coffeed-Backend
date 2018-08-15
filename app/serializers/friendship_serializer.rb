@@ -1,12 +1,16 @@
 class FriendshipSerializer < ActiveModel::Serializer
-  attributes :friendship_id, :friend_name, :friend_id, :last_seen
+  attributes :friendship_id, :name, :username, :friend_id, :last_seen
 
   def friendship_id
     object.id
   end
 
-  def friend_name
+  def name
     object.friend.name
+  end
+
+  def username
+    object.friend.username
   end
 
   def friend_id

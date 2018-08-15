@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   get 'users/:user_id/pending_friends' => 'users#pending_friends'
   get 'users/:user_id/friendships' => 'users#friendships'
+  patch 'users/:user_id/friendships/:friendship_id' => 'users#friendships_update'
   resources :users do
     resources :friends, only: [:index]
     get 'friends/destroy/:friend_id' => 'friends#destroy'

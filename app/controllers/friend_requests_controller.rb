@@ -29,7 +29,6 @@ class FriendRequestsController < ApplicationController
   end
 
   def update
-    byebug
     @friend_request.accept
     head :no_content
   end

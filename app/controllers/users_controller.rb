@@ -64,7 +64,7 @@ class UsersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def friendship_params
-      params.require(:friend_id).permit(:last_seen)
+      params.permit(:last_seen)
     end
 
     def user_params
