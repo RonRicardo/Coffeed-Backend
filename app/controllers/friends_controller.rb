@@ -8,7 +8,11 @@ class FriendsController < ApplicationController
 
   def destroy
     current_user.remove_friend(@friend)
-    head :no_content
+    # head :no_content
+    render json: {
+      status: 200,
+      message: "Successfully deleted friend",
+    }
   end
 
   private

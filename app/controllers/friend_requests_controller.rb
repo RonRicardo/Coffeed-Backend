@@ -13,24 +13,26 @@ class FriendRequestsController < ApplicationController
     end
   end
 
-  def incoming
-    @incoming = FriendRequest.where(friend: current_user)
-      render json: @incoming
-  end
+  # def incoming
+  #   @incoming = FriendRequest.where(friend: current_user)
+  #     render json: @incoming
+  # end
+  #
+  # def outgoing
+  #   @outgoing = current_user.friend_requests
+  #     render json: @outgoing
+  # end
 
-  def outgoing
-    @outgoing = current_user.friend_requests
-      render json: @outgoing
-  end
 
   def destroy
     @friend_request.destroy
-    head :no_content
+    render json: { status: 200, message: "Successfully deleted friend request"}
   end
 
   def update
     @friend_request.accept
-    head :no_content
+    render json: { status: 200, message: "Successfully accepted friend request"}
+
   end
 
   private

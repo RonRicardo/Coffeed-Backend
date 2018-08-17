@@ -52,7 +52,7 @@ class UsersController < ApplicationController
   end
 
   def pending_friends
-    @pending_friends = @user.pending_friends
+    @pending_friends = @user.pending_friends.uniq
     render json: @pending_friends
   end
 

@@ -7,8 +7,8 @@ Rails.application.routes.draw do
     resources :friends, only: [:index]
     get 'friends/destroy/:friend_id' => 'friends#destroy'
     ## friend requests ##
-    get 'friend_requests/incoming' => 'friend_requests#incoming'
-    get 'friend_requests/outgoing' => 'friend_requests#outgoing'
+    # get 'friend_requests/incoming' => 'friend_requests#incoming'
+    # get 'friend_requests/outgoing' => 'friend_requests#outgoing'
     get 'friend_requests/:friend_id' => 'friend_requests#show'
     patch 'friend_requests/:friend_id/' => 'friend_requests#update'
     delete 'friend_requests/:friend_id/' => 'friend_requests#destroy'
