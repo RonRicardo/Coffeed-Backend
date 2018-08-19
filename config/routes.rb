@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  mount_devise_token_auth_for 'User', at: 'auth'
+  mount_devise_token_auth_for 'User', at: 'auth', skip: [:omniauth_callbacks]
 
+
+  post 'auth/request', to:'authorization#get_authorization'
   get 'users/:user_id/pending_friends' => 'users#pending_friends'
   get 'users/:user_id/friendships' => 'users#friendships'
   patch 'users/:user_id/friendships/:friendship_id' => 'users#friendships_update'

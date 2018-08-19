@@ -18,6 +18,7 @@ gem 'puma', '~> 3.11'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem 'devise_token_auth'
+gem 'dotenv-rails', groups: [:development, :test]
 gem 'faker', '~> 1.9', '>= 1.9.1'
 gem 'active_model_serializers', '0.9.3'
 # Use ActiveStorage variant
