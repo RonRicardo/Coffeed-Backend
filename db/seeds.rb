@@ -10,7 +10,17 @@ require 'faker'
 User.destroy_all
 Friendship.destroy_all
 
+
 30.times do
-  User.create(name: Faker::Name.first_name)
-  Friendship.create(user_id: rand(1..15), friend_id: rand(16..30))
+  User.create(name: Faker::Name.first_name, username: Faker::Pokemon.unique.name)
 end
+
+10.times do |i|
+  Friendship.create(user_id: 1, friend_id: rand(16..30))
+end
+
+FriendRequest.create(user_id: 1, friend_id: 2)
+FriendRequest.create(user_id: 1, friend_id: 3)
+FriendRequest.create(user_id: 1, friend_id: 4)
+FriendRequest.create(user_id: 1, friend_id: 5)
+FriendRequest.create(user_id: 1, friend_id: 6)
