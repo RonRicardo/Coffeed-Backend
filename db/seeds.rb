@@ -12,7 +12,9 @@ Friendship.destroy_all
 
 
 30.times do
-  User.create(name: Faker::Name.first_name, username: Faker::Pokemon.unique.name, password: '12345')
+  User.create(name: Faker::Name.first_name, username: Faker::Pokemon.unique.name, password: '12345',
+  email: Faker::Internet.unique
+  )
 end
 
 10.times do |i|
