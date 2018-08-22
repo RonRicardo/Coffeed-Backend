@@ -25,14 +25,15 @@ class FriendRequestsController < ApplicationController
 
 
   def destroy
+    @friend_id = @friend_request.friend_id
     @friend_request.destroy
-    render json: { status: 200, message: "Successfully deleted friend request"}
+    render json: { friend_id: @friend_id, status: 200, message: "Successfully deleted friend request"}
   end
 
   def update
+    @friend_id = @friend_request.friend_id
     @friend_request.accept
-    render json: { status: 200, message: "Successfully accepted friend request"}
-
+    render json: { friend_id: @friend_id,  status: 200, message: "Successfully accepted friend request"}
   end
 
   private

@@ -43,10 +43,11 @@ class UsersController < ApplicationController
   end
 
   def friendship_delete
-    # @friendship = Friendship.find(params[:friendship_id])
     @friendship = Friendship.where(user_id: params[:user_id], friend_id: params[:friend_id]).first
+    friendship_id = @friendship.id
     @friendship.destroy
     render json: {
+      friendship_id: friendship_id.to_i,
       status: 200,
       message: "Successfully deleted friendship",
     }
