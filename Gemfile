@@ -20,7 +20,7 @@ gem 'omniauth-google-oauth2'
 gem 'devise_token_auth'
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'faker', '~> 1.9', '>= 1.9.1'
-gem 'active_model_serializers', '0.9.3'
+gem 'active_model_serializers', '~> 0.10.0.rc1'
 gem 'httparty'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

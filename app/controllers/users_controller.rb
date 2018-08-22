@@ -42,6 +42,16 @@ class UsersController < ApplicationController
     render json: @friendships
   end
 
+  def friendship_delete
+    # @friendship = Friendship.find(params[:friendship_id])
+    @friendship = Friendship.where(user_id: params[:user_id], friend_id: params[:friend_id]).first
+    @friendship.destroy
+    render json: {
+      status: 200,
+      message: "Successfully deleted friendship",
+    }
+  end
+
   def friendships_update
     @friendship = Friendship.find(params[:friendship_id])
     if @friendship.update(friendship_params)

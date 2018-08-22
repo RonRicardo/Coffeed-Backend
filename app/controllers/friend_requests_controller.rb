@@ -13,15 +13,15 @@ class FriendRequestsController < ApplicationController
     end
   end
 
-  # def incoming
-  #   @incoming = FriendRequest.where(friend: current_user)
-  #     render json: @incoming
-  # end
-  #
-  # def outgoing
-  #   @outgoing = current_user.friend_requests
-  #     render json: @outgoing
-  # end
+  def incoming
+    @incoming = FriendRequest.where(friend: current_user)
+      render json: @incoming
+  end
+
+  def outgoing
+    @outgoing = current_user.friend_requests
+      render json: @outgoing
+  end
 
 
   def destroy

@@ -1,14 +1,15 @@
 Rails.application.routes.draw do
-  mount_devise_token_auth_for 'User', at: 'auth', skip: [:omniauth_callbacks]
 
 
-  post 'auth/request', to:'authorization#get_authorization'
   get 'users/:user_id/pending_friends' => 'users#pending_friends'
   get 'users/:user_id/friendships' => 'users#friendships'
   patch 'users/:user_id/friendships/:friendship_id' => 'users#friendships_update'
+
   resources :users do
+    resources :saved_places
+    resources :plans
     resources :friends, only: [:index]
-    get 'friends/destroy/:friend_id' => 'friends#destroy'
+    delete 'friends/destroy/:friend_id' => 'users#friendship_delete'
     ## friend requests ##
     # get 'friend_requests/incoming' => 'friend_requests#incoming'
     # get 'friend_requests/outgoing' => 'friend_requests#outgoing'
