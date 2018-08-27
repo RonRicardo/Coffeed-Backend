@@ -33,7 +33,7 @@ class FriendRequestsController < ApplicationController
   def update
     @friend_id = @friend_request.friend_id
     @friend_request.accept
-    render json: { friend_id: @friend_id,  status: 200, message: "Successfully accepted friend request"}
+    render json: { friend_id: @friend_id, friend: @friend_request.friend, status: 200, message: "Successfully accepted friend request"}
   end
 
   private
