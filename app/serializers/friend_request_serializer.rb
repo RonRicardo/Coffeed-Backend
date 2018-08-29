@@ -5,5 +5,4 @@ class FriendRequestSerializer < ActiveModel::Serializer
     object.id
   end
 
-  # add friend object
 end

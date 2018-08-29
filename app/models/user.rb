@@ -1,5 +1,4 @@
 class User < ApplicationRecord
-
   has_many :friend_requests, dependent: :destroy
   has_many :pending_friends, through: :friend_requests, source: :friend
 
@@ -8,10 +7,9 @@ class User < ApplicationRecord
 
   has_many :saved_places
 
-  # def remove_friend(friend)
-  #   current_user = User.find(1)
-  #   byebug
-  #   current_user.friends.destroy(friend)
-  # end
+  def remove_friend(friend)
+    current_user = User.find(1)
+    current_user.friends.destroy(friend)
+  end
 
 end
